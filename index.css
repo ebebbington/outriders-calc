@@ -9,6 +9,9 @@ body {
     font-family: 'Nunito', Helvetica, Arial, sans-serif;
     font-size: 1.1rem;
     line-height: 2.25rem;
+    width: 396px;
+    margin: auto;
+    margin-top: 6em;
 }
 input {
     border: none;
@@ -17,6 +20,7 @@ input {
 footer {
     position: absolute;
     bottom: 0;
+    left: 0
 }
 .display-flex {
     display: flex;
@@ -67,6 +71,9 @@ input:read-only {
 }
 .card input:last-of-type {
     margin-bottom: 0;
+}
+.card input {
+    width: 122px;
 }
 
 /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
