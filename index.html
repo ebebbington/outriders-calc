@@ -35,9 +35,11 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <h1>Outriders Calc</h1>
-    <p>Determine if an item is worth upgrading. Compare your current item with a new one, to see if the new item will be stronger in the long run.</p>
-    <hr>
+    <header>
+      <h1>Outriders Calc</h1>
+    </header>
+    <p>Compare your current item with a new one, to see if the new item will be stronger in the long run.</h2>
+
     <div class="display-inline-block">
       <div class="switch-field">
           <input type="radio" id="weapon" name="switch-one" value="yes" checked />
@@ -46,22 +48,20 @@
           <label for="armour">Armour</label>
       </div>
     </div>
-    <hr>
     <div id="compare-container" class="display-flex text-align-center">
         <div id="item-1-container" class="card margin-auto">
             <h2>Item 1</h2>
-            <label>Item level: <input type="text" maxlength="2" id="item-1-level"></label>
-            <label>Item Power: <input type="text" id="item-1-power"></label>
-            <label>Power at level 42:<input readonly type="text" id="item-1-result" tabindex="-1"></label>
+            <input type="text" maxlength="2" id="item-1-level" placeholder="Level">
+            <input type="text" id="item-1-power" placeholder="Power">
+            <input readonly type="text" id="item-1-result" tabindex="-1" placeholder="Power at Level 42">
         </div>
         <div id="item-2-container" class="card margin-auto">
             <h2>Item 2</h2>
-            <label>Item level: <input type="text" maxlength="2" id="item-2-level"></label>
-            <label>Item Power: <input type="text" id="item-2-power"></label>
-            <label>Power at level 42:<input readonly type="text" id="item-2-result" tabindex="-1"></label>
+            <input type="text" maxlength="2" id="item-2-level" placeholder="Level">
+            <input type="text" id="item-2-power" placeholder="Power">
+            <input readonly type="text" id="item-2-result" tabindex="-1" placeholder="Power at Level 42">
         </div>
     </div>
-    <hr>
     <footer>This site is not affiliated with the Outriders game in any way. Submit issues or feature requests here: link here</footer>
   </body>
 

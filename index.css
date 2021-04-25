@@ -4,6 +4,11 @@ html {
 body {
     text-align: center;
     font-family: "HK Grotesk", Helvetica, arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    font-family: 'Nunito', Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    line-height: 2.25rem;
 }
 .display-flex {
     display: flex;
@@ -11,15 +16,29 @@ body {
 .text-align-center {
     text-align: center;
 }
+header {
+    text-align: left;
+}
 .margin-auto {
     margin: auto
 }
-.card label {
+.card input {
     display: block;
-    text-align: right;
+    padding: .8em;
+    margin: .5em;
+}
+input:read-only {
+    cursor: default
 }
 .display-inline-block {
     display: inline-block;
+}
+
+#item-1-container {
+    margin-right: .5em;
+}
+#item-2-container {
+    margin-left: 0.5em;
 }
 
 /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
