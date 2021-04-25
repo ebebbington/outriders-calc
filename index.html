@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://outriders-calc.com">
     <meta property="og:title" content="Outriders Calc">
-    <meta property="og:description" content="Outriders weapon calculator. Determine if a new item is stronger than your current.">
+    <meta property="og:description" content="Outriders weapon calculator. Determine if an item is worth upgrading.">
     <meta property="og:image" content="/assets/common/img/drash.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:domain" content="outriders-calc">
@@ -36,10 +36,12 @@
         scroll-behavior: smooth;
       }
     </style>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <h1>Outriders Calc</h1>
-    <p>Calculator for Outriders to determine if one item is stronger than another.</p>
+    <p>Determine if an item is worth upgrading.</p>
     <hr>
     <div class="switch-field">
         <input type="radio" id="weapon" name="switch-one" value="yes" checked />
@@ -53,91 +55,17 @@
             <h2>Item 1</h2>
             <label>Item level: <input type="text" maxlength="2" id="item-1-level"></label>
             <label>Item Power: <input type="text" id="item-1-power"></label>
-            <label>Power at level 50:<input readonly type="text"></label>
+            <label>Power at level 42:<input readonly type="text" id="item-1-result" tabindex="-1"></label>
         </div>
         <div id="item-2-container" class="card margin-auto">
             <h2>Item 2</h2>
             <label>Item level: <input type="text" maxlength="2" id="item-2-level"></label>
             <label>Item Power: <input type="text" id="item-2-power"></label>
-            <label>Power at level 50:<input readonly type="text"></label>
+            <label>Power at level 42:<input readonly type="text" id="item-2-result" tabindex="-1"></label>
         </div>
     </div>
     <hr>
     <footer>This site is not affiliated with the Outriders game in any way. Submit issues or feature requests here: link here</footer>
   </body>
-  <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        // On any of the item fields changing, try update the items total power
-        const $itemOneLevel = document.getElementById("item-1-level")
-        const $itemOnePower = document.getElementById("item-1-power")
-        const $itemTwoLevel = document.getElementById("item-2-level")
-        const $itemTwoPower = document.getElementById("item-2-power")
-        $itemOneLevel.addEventListener("keydown", () => {
-            console.log("")
-        })
-        function updateItemLevel(itemNumber) {
-            
-        }
-      })
-    </script>
-  <style>
-      body {
-          text-align: center;
-      }
-      #compare-container {
-          display: flex;
-          text-align: center;
-      }
-      .margin-auto {
-          margin: auto
-      }
-      .card label {
-          display: block;
-          text-align: right;
-      }
-      /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
-      .switch-field {
-	display: flex;
-	margin-bottom: 36px;
-	overflow: hidden;
-}
-      .switch-field input {
-  position: absolute !important;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  width: 1px;
-  border: 0;
-  overflow: hidden;
-}
 
-.switch-field label {
-  background-color: #e4e4e4;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
-  line-height: 1;
-  text-align: center;
-  padding: 8px 16px;
-  margin-right: -1px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-  transition: all 0.1s ease-in-out;
-}
-
-.switch-field label:hover {
-  cursor: pointer;
-}
-
-.switch-field input:checked + label {
-  background-color: #a5dc86;
-  box-shadow: none;
-}
-
-.switch-field label:first-of-type {
-  border-radius: 4px 0 0 4px;
-}
-
-.switch-field label:last-of-type {
-  border-radius: 0 4px 4px 0;
-}
-  </style>
 </html>
