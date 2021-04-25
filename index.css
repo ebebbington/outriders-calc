@@ -1,8 +1,14 @@
+html {
+    scroll-behavior: smooth;
+}
 body {
     text-align: center;
+    font-family: "HK Grotesk", Helvetica, arial, sans-serif;
 }
-#compare-container {
+.display-flex {
     display: flex;
+}
+.text-align-center {
     text-align: center;
 }
 .margin-auto {
@@ -11,6 +17,9 @@ body {
 .card label {
     display: block;
     text-align: right;
+}
+.display-inline-block {
+    display: inline-block;
 }
 
 /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
