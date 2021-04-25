@@ -10,8 +10,24 @@ body {
     font-size: 1.1rem;
     line-height: 2.25rem;
 }
+input {
+    border: none;
+    outline: none
+}
+footer {
+    position: absolute;
+    bottom: 0;
+}
 .display-flex {
     display: flex;
+}
+.highlight-good {
+    background-color: green;
+    color: white
+}
+.highlight-bad {
+    background-color: red;
+    color: white;
 }
 .text-align-center {
     text-align: center;
