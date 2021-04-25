@@ -49,12 +49,24 @@ input:read-only {
 .display-inline-block {
     display: inline-block;
 }
+.display-none {
+    display: none;
+}
 
 #item-1-container {
     margin-right: .5em;
 }
 #item-2-container {
     margin-left: 0.5em;
+}
+#compare-container .card > #item-1-result-table {
+    background: red;
+    position: absolute;
+    padding: .8em;
+    margin: 0 0.5em;
+}
+.card input:last-of-type {
+    margin-bottom: 0;
 }
 
 /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
