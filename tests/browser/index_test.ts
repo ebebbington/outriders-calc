@@ -41,7 +41,7 @@ Rhum.testPlan("Home page", () => {
       const result = await Sinco.evaluatePage(() => {
         // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
         // @ts-ignore
-        document.getElementById("single").click()
+        document.getElementById("single").click();
         return {
           // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
           // @ts-ignore
@@ -117,7 +117,7 @@ Rhum.testPlan("Home page", () => {
           background:
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
             // @ts-ignore
-            document.querySelector("div#single-result").getElementsByClassName
+            document.querySelector("div#single-result > div").style
               // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
               // @ts-ignore
               .background,
