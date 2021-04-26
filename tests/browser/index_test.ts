@@ -90,22 +90,40 @@ Rhum.testPlan("Home page", () => {
         await Sinco.build();
         await Sinco.goTo("http://localhost:1337");
         async function getRadioInfo() {
-          function getRadioInfo(id: string) {
-            return {
-              // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-              // @ts-ignore
-              checked: document.getElementById(id).checked,
-              // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-              // @ts-ignore
-              disabled: document.getElementById(id).getAttribute("disabled"),
-            };
-          }
           return await Sinco.evaluatePage(() => {
             return {
-              weapon: getRadioInfo("weapon"),
-              armour: getRadioInfo("armour"),
-              single: getRadioInfo("single"),
-              double: getRadioInfo("double"),
+              weapon: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("weapon").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("weapon").getAttribute("disabled"),
+              },
+              armour: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("armour").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("armour").getAttribute("disabled"),
+              },
+              single: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("single").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("single").getAttribute("disabled"),
+              },
+              double: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("double").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("double").getAttribute("disabled"),
+              },
             };
           });
         }
