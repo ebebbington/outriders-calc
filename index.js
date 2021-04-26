@@ -228,13 +228,13 @@ const upradeMultipliers = { // eg a level 10 item will have its power multiplied
 
 window.addEventListener("DOMContentLoaded", () => {
   const radioButtons = {
-    $weapon: document.getElementById("weapon"),
-    $armor: document.getElementById("armour"),
-    $single: document.getElementById("single"),
-    $double: document.getElementById("double"),
+    $weapon: document.getElementById("weapon-switch"),
+    $armor: document.getElementById("armour-switch"),
+    $check: document.getElementById("check-switch"),
+    $compare: document.getElementById("compare-switch"),
   };
   const itemInputs = {
-    double: {
+    compare: {
       1: {
         $level: document.getElementById("item-1-level"),
         $power: document.getElementById("item-1-power"),
@@ -246,30 +246,30 @@ window.addEventListener("DOMContentLoaded", () => {
         $result: document.getElementById("item-2-result"),
       },
     },
-    single: {
-      $level: document.getElementById("single-level"),
-      $power: document.getElementById("single-power"),
-      $rarity: document.getElementById("single-rarity"),
-      $result: document.getElementById("single-result"),
+    check: {
+      $level: document.getElementById("check-level"),
+      $power: document.getElementById("check-power"),
+      $rarity: document.getElementById("check-rarity"),
+      $result: document.getElementById("check-result"),
     },
   };
 
   // On the type changed, adjust the UI accordingly to display the proper cards
-  radioButtons.$single.addEventListener("change", () => {
+  radioButtons.$check.addEventListener("change", () => {
     radioButtons.$armor.setAttribute("disabled", true);
     updateCards(true);
   });
-  radioButtons.$double.addEventListener("change", () => {
+  radioButtons.$compare.addEventListener("change", () => {
     radioButtons.$armor.removeAttribute("disabled");
     updateCards(false);
   });
   radioButtons.$weapon.addEventListener("change", () => {
-    radioButtons.$single.removeAttribute("disabled");
+    radioButtons.$check.removeAttribute("disabled");
     updateItemLevel(1);
     updateItemLevel(2);
   });
   radioButtons.$armor.addEventListener("change", () => {
-    radioButtons.$single.setAttribute("disabled", true);
+    radioButtons.$check.setAttribute("disabled", true);
     updateItemLevel(1);
     updateItemLevel(2);
   });
@@ -277,14 +277,14 @@ window.addEventListener("DOMContentLoaded", () => {
   function updateCards(isSingle) {
     if (isSingle === true) {
       // Hide compare cards, display single card
-      document.getElementById("single-compare").classList.remove(
+      document.getElementById("check-container").classList.remove(
         "display-none",
       );
       document.getElementById("compare-container").classList.add(
         "display-none",
       );
     } else {
-      document.getElementById("single-compare").classList.add("display-none");
+      document.getElementById("check-container").classList.add("display-none");
       document.getElementById("compare-container").classList.remove(
         "display-none",
       );
@@ -292,23 +292,25 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // On any of the item fields changing, try update the items total power
-  itemInputs.double[1].$level.addEventListener("keyup", () => {
+  itemInputs.compare[1].$level.addEventListener("keyup", () => {
     updateItemLevel(1);
   });
-  itemInputs.double[1].$power.addEventListener("keyup", () => {
+  itemInputs.compare[1].$power.addEventListener("keyup", () => {
     console.log("yyy");
     updateItemLevel(1);
   });
-  itemInputs.double[2].$level.addEventListener("keyup", () => {
+  itemInputs.compare[2].$level.addEventListener("keyup", () => {
     updateItemLevel(2);
   });
-  itemInputs.double[2].$power.addEventListener("keyup", () => {
+  itemInputs.compare[2].$power.addEventListener("keyup", () => {
     updateItemLevel(2);
   });
   function handleSingle() {
-    const level = itemInputs.single.$level.value;
-    const power = itemInputs.single.$power.value;
-    const rarity = itemInputs.single.$rarity.value.toLowerCase();
+    console.log('inside single')
+    const level = itemInputs.check.$level.value;
+    const power = itemInputs.check.$power.value;
+    const rarity = itemInputs.check.$rarity.value.toLowerCase();
+    console.log(level, power, rarity)
 
     //
     // VALIDATION
@@ -355,22 +357,22 @@ window.addEventListener("DOMContentLoaded", () => {
         colour = "red";
         break;
     }
-    document.querySelector("div#single-result > div").style.width = percentage +
+    document.querySelector("div#check-result > div").style.width = percentage +
       "%";
-    document.querySelector("div#single-result > div").style.background = colour;
+    document.querySelector("div#check-result > div").style.background = colour;
   }
-  itemInputs.single.$level.addEventListener("keyup", () => {
+  itemInputs.check.$level.addEventListener("keyup", () => {
     handleSingle();
   });
-  itemInputs.single.$rarity.addEventListener("change", () => {
+  itemInputs.check.$rarity.addEventListener("change", () => {
     handleSingle();
   });
-  itemInputs.single.$power.addEventListener("keyup", () => {
+  itemInputs.check.$power.addEventListener("keyup", () => {
     handleSingle();
   });
 
   function getSelectedItemType() {
-    const $weapon = document.getElementById("weapon");
+    const $weapon = document.getElementById("weapon-check");
     if ($weapon.checked) {
       return "weapon";
     } else {
@@ -378,8 +380,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
   function updateItemLevel(itemNumber) {
-    const itemLevel = Number(itemInputs.double[itemNumber].$level.value);
-    const itemPower = Number(itemInputs.double[itemNumber].$power.value);
+    const itemLevel = Number(itemInputs.compare[itemNumber].$level.value);
+    const itemPower = Number(itemInputs.compare[itemNumber].$power.value);
 
     //
     // VALIDATION
@@ -417,8 +419,8 @@ window.addEventListener("DOMContentLoaded", () => {
     displayWhichItemIsStronger();
   }
   function displayWhichItemIsStronger() {
-    const itemOneResult = Number(itemInputs.double[1].$result.value);
-    const itemTwoResult = Number(itemInputs.double[2].$result.value);
+    const itemOneResult = Number(itemInputs.compare[1].$result.value);
+    const itemTwoResult = Number(itemInputs.compare[2].$result.value);
     // If either fields dont have a value of some sort, then clear the highlight
     if (
       !itemOneResult || !itemTwoResult || isNaN(itemOneResult) ||
@@ -428,29 +430,29 @@ window.addEventListener("DOMContentLoaded", () => {
         "highlight-good",
         "highlight-bad",
       );
-      itemInputs.double[1].$result.classList.remove(
+      itemInputs.double[2].$result.classList.remove(
         "highlight-good",
         "highlight-bad",
       );
       return false;
     }
     if (itemOneResult === itemTwoResult) {
-      itemInputs.double[1].$result.classList.add("highlight-good");
-      itemInputs.double[2].$result.classList.remove("highlight-bad");
-      itemInputs.double[1].$result.classList.remove("highlight-bad");
-      itemInputs.double[2].$result.classList.add("highlight-good");
+      itemInputs.compare[1].$result.classList.add("highlight-good");
+      itemInputs.compare[2].$result.classList.remove("highlight-bad");
+      itemInputs.compare[1].$result.classList.remove("highlight-bad");
+      itemInputs.compare[2].$result.classList.add("highlight-good");
       return true;
     }
     if (itemOneResult > itemTwoResult) {
-      itemInputs.double[1].$result.classList.add("highlight-good");
-      itemInputs.double[2].$result.classList.add("highlight-bad");
-      itemInputs.double[1].$result.classList.remove("highlight-bad");
-      itemInputs.double[2].$result.classList.remove("highlight-good");
+      itemInputs.compare[1].$result.classList.add("highlight-good");
+      itemInputs.compare[2].$result.classList.add("highlight-bad");
+      itemInputs.compare[1].$result.classList.remove("highlight-bad");
+      itemInputs.compare[2].$result.classList.remove("highlight-good");
     } else {
-      itemInputs.double[1].$result.classList.add("highlight-bad");
-      itemInputs.double[2].$result.classList.add("highlight-good");
-      itemInputs.double[1].$result.classList.remove("highlight-good");
-      itemInputs.double[2].$result.classList.remove("highlight-bad");
+      itemInputs.compare[1].$result.classList.add("highlight-bad");
+      itemInputs.compare[2].$result.classList.add("highlight-good");
+      itemInputs.compare[1].$result.classList.remove("highlight-good");
+      itemInputs.compare[2].$result.classList.remove("highlight-bad");
     }
   }
 });

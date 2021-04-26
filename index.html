@@ -42,34 +42,34 @@
   <body>
     <header>
       <h1>Outriders Item Calculator</h1>
+      <p>Compare two items to see which one wins, or how strong a single one is.</p>
     </header>
-    <p id="description">Compare two items to see which one wins, or how strong a single one is.</p>
     <div class="display-inline-block">
       <div class="switch-field">
-          <input type="radio" id="weapon" name="switch-one" value="yes" checked />
-          <label for="weapon">Weapon</label>
-          <input type="radio" id="armour" name="switch-one" value="no"/>
-          <label for="armour">Armour</label>
+          <input type="radio" id="weapon-switch" name="switch-one" value="yes" checked />
+          <label for="weapon-switch">Weapon</label>
+          <input type="radio" id="armour-switch" name="switch-one" value="no"/>
+          <label for="armour-switch">Armour</label>
       </div>
       <div class="switch-field">
-        <input type="radio" id="single" name="switch-two" value="no" />
-        <label for="single">Check One</label>
-        <input type="radio" id="double" name="switch-two" value="yes" checked />
-        <label for="double">Compare Two</label>
+        <input type="radio" id="check-switch" name="switch-two" value="no" />
+        <label for="check-switch">Check One</label>
+        <input type="radio" id="compare-switch" name="switch-two" value="yes" checked />
+        <label for="compare-switch">Compare Two</label>
       </div>
     </div>
-    <div id="single-container" class="display-flex">
-      <div id="single-compare" class="card display-none margin-auto">
+    <div class="display-flex">
+      <div id="check-container" class="card display-none margin-auto">
         <h2>Item</h2>
-        <input type="number" id="single-level" title="Level for iten" placeholder="Level (min: 10)">
-        <input type="number" id="single-power" title="Power for item" placeholder="Power">
-        <input list="rarities" name="rarity" id="single-rarity" title="Rarity of item" placeholder="Rarity">
+        <input type="number" id="check-level" title="Level for item" placeholder="Level (min: 10)">
+        <input type="number" id="check-power" title="Power for item" placeholder="Power">
+        <input list="rarities" name="rarity" id="check-rarity" title="Rarity of item" placeholder="Rarity">
         <datalist id="rarities">
           <option value="Rare"></option>
           <option value="Epic"></option>
-          <option value="Legendary"> </option>
+          <option value="Legendary"></option>
         </datalist>
-        <div id="single-result">
+        <div id="check-result">
           <div></div>
         </div>
       </div>
