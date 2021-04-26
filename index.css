@@ -11,7 +11,7 @@ body {
     line-height: 2.25rem;
     width: 396px;
     margin: auto;
-    margin-top: 6em;
+    margin-top: 5em;
 }
 .display-block {
     display: block;
@@ -24,9 +24,7 @@ input:disabled + label {
     cursor: not-allowed !important;
 }
 footer {
-    position: absolute;
-    bottom: 0;
-    left: 0
+    margin-top: 2em;
 }
 .display-flex {
     display: flex;
@@ -62,7 +60,10 @@ input:read-only {
 .display-none {
     display: none;
 }
-
+#description, #notice, footer > p {
+    max-width: 90vw;
+    margin: auto;
+}
 #item-1-container {
     margin-right: .5em;
 }
@@ -85,7 +86,7 @@ input:read-only {
 /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
 .switch-field {
     display: flex;
-    margin-bottom: 36px;
+    /* margin-bottom: 36px; */
     overflow: hidden;
 }
 .switch-field input {
@@ -122,3 +123,5 @@ input:read-only {
 .switch-field label:last-of-type {
     border-radius: 0 4px 4px 0;
 }
+
+/*TODO ON MOBILE, DESCRESE WIDTH OF ITEM IONPUTS AND INCREASE FONT SIZE*/

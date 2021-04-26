@@ -43,9 +43,8 @@
     <header class="text-align-center">
       <h1>Outriders Calc</h1>
     </header>
-    <p>Compare your current item with a new one, to see if the new item will be stronger in the long run.</p>
-    <small class="display-block">Armor selection is temporarily disabled as it contains some issues.</small>
-
+    <p id="description">Compare your current item with a new one, to see if the new item will be stronger in the long run.</p>
+    <small id="notice" class="display-block">Armor selection is temporarily disabled as it contains some issues.</small>
     <div class="display-inline-block">
       <div class="switch-field">
           <input type="radio" id="weapon" name="switch-one" value="yes" checked />
@@ -57,7 +56,7 @@
     <div id="compare-container" class="display-flex text-align-center">
         <div id="item-1-container" class="card margin-auto">
             <h2>Item 1</h2>
-            <input type="number" id="item-1-level" title="Level for item 1. Minimum is 10." placeholder="Level (minimum: 10)">
+            <input type="number" id="item-1-level" title="Level for item 1. Minimum is 10." placeholder="Level (min: 10)">
             <input type="number" id="item-1-power" title="Power for item 1" placeholder="Power">
             <input type="number" id="item-1-result" placeholder="Power at Level 50" readonly tabindex="-1" title="Level 50 power for item 1">
             <!-- <table id="item-1-result-table">
@@ -73,12 +72,12 @@
         </div>
         <div id="item-2-container" class="card margin-auto">
             <h2>Item 2</h2>
-            <input type="number" id="item-2-level" placeholder="Level (minimum: 10)" title="Level for item 2. Minimum is 10">
+            <input type="number" id="item-2-level" placeholder="Level (min: 10)" title="Level for item 2. Minimum is 10">
             <input type="number" id="item-2-power" placeholder="Power" title="Power for item 2">
             <input type="number" id="item-2-result" placeholder="Power at Level 50" readonly tabindex="-1" title="Level 50 power for item 2">
         </div>
     </div>
-    <footer>This site is not affiliated with the Outriders game in any way. Submit issues or feature requests <a href="https://github.com/ebebbington/outriders-calc/issues/new/choose">here</a></footer>
+    <footer><p>Not affiliated with Outriders. Submit issues or features <a href="https://github.com/ebebbington/outriders-calc/issues/new/choose">here</a></p></footer>
   </body>
 
 </html>
