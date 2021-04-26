@@ -54,8 +54,8 @@ Rhum.testPlan("Home page", () => {
       });
       await Sinco.done();
       Rhum.asserts.assertEquals(result, {
-        single: true,
-        double: false,
+        single: false,
+        double: true,
       });
     });
     // Rhum.testCase("Can switch types back and forth for double", async () => {
