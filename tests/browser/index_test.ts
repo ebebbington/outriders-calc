@@ -98,7 +98,9 @@ Rhum.testPlan("Home page", () => {
                 checked: document.getElementById("weapon").checked,
                 // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
                 // @ts-ignore
-                disabled: document.getElementById("weapon").getAttribute("disabled"),
+                disabled: document.getElementById("weapon").getAttribute(
+                  "disabled",
+                ),
               },
               armour: {
                 // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
@@ -106,7 +108,9 @@ Rhum.testPlan("Home page", () => {
                 checked: document.getElementById("armour").checked,
                 // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
                 // @ts-ignore
-                disabled: document.getElementById("armour").getAttribute("disabled"),
+                disabled: document.getElementById("armour").getAttribute(
+                  "disabled",
+                ),
               },
               single: {
                 // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
@@ -114,7 +118,9 @@ Rhum.testPlan("Home page", () => {
                 checked: document.getElementById("single").checked,
                 // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
                 // @ts-ignore
-                disabled: document.getElementById("single").getAttribute("disabled"),
+                disabled: document.getElementById("single").getAttribute(
+                  "disabled",
+                ),
               },
               double: {
                 // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
@@ -122,7 +128,9 @@ Rhum.testPlan("Home page", () => {
                 checked: document.getElementById("double").checked,
                 // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
                 // @ts-ignore
-                disabled: document.getElementById("double").getAttribute("disabled"),
+                disabled: document.getElementById("double").getAttribute(
+                  "disabled",
+                ),
               },
             };
           });
@@ -173,7 +181,7 @@ Rhum.testPlan("Home page", () => {
         });
         Rhum.asserts.assertEquals(result3, {
           weapon: {
-            checked: true,
+            checked: "true",
             disabled: null,
           },
           armour: {
@@ -185,7 +193,7 @@ Rhum.testPlan("Home page", () => {
             disabled: null,
           },
           double: {
-            checked: true,
+            checked: "true",
             disabled: null,
           },
         });
@@ -199,7 +207,7 @@ Rhum.testPlan("Home page", () => {
             disabled: true,
           },
           single: {
-            checked: true,
+            checked: "true",
             disabled: null,
           },
           double: {
