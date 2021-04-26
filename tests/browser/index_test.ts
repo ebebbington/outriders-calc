@@ -113,6 +113,8 @@ Rhum.testPlan("Home page", () => {
           // @ts-ignore
           background:
             document.querySelector("div#single-result").getElementsByClassName
+              // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+              // @ts-ignore
               .background,
         };
       });
