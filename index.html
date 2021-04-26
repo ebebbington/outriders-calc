@@ -52,8 +52,30 @@
           <input type="radio" id="armour" name="switch-one" value="no" disabled/>
           <label for="armour">Armour</label>
       </div>
+      <div class="switch-field">
+        <input type="radio" id="single" name="switch-two" value="no" />
+        <label for="single"> Single</label>
+        <input type="radio" id="double" name="switch-two" value="yes" checked />
+        <label for="double">Double</label>
+      </div>
     </div>
-    <div id="compare-container" class="display-flex text-align-center">
+    <div id="single-container" class="display-flex">
+      <div id="single-compare" class="card display-none margin-auto">
+        <h2>Item</h2>
+        <input type="number" id="single-level" title="Level for iten" placeholder="Level (min: 10)">
+        <input type="number" id="single-power" title="Power for item" placeholder="Power">
+        <input list="rarities" name="rarity" id="single-rarity" title="Rarity of item" placeholder="Rarity">
+        <datalist id="rarities">
+          <option value="Rare"></option>
+          <option value="Epic"></option>
+          <option value="Legendary"> </option>
+        </datalist>
+        <div id="single-result" style="border: 1px solid white">
+          <div style="height: 33px; background-color: white; width: 0%"></div>
+        </div>
+      </div>
+    </div>
+    <div id="compare-container" class="display-flex">
         <div id="item-1-container" class="card margin-auto">
             <h2>Item 1</h2>
             <input type="number" id="item-1-level" title="Level for item 1. Minimum is 10." placeholder="Level (min: 10)">
@@ -77,7 +99,7 @@
             <input type="number" id="item-2-result" placeholder="Power at Level 50" readonly tabindex="-1" title="Level 50 power for item 2">
         </div>
     </div>
-    <footer><p>Not affiliated with Outriders. Submit issues or features <a href="https://github.com/ebebbington/outriders-calc/issues/new/choose">here</a></p></footer>
+    <footer><p>Not affiliated with Outriders. Submit issues or feature requests <a href="https://github.com/ebebbington/outriders-calc/issues/new/choose">here</a></p></footer>
   </body>
 
 </html>

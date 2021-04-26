@@ -66,6 +66,8 @@ input:read-only {
     padding: .8em;
     margin: .5em;
     width: 130px;
+    margin-left: auto;
+    margin-right: auto;
 }
 #item-1-container {
     margin-right: .5em;
@@ -73,11 +75,8 @@ input:read-only {
 #item-2-container {
     margin-left: 0.5em;
 }
-#compare-container .card > #item-1-result-table {
-    background: red;
-    position: absolute;
-    padding: .8em;
-    margin: 0 0.5em;
+.switch-field label {
+    width: 53.36px; /* only because each switch field contains 2 inputs, we can ensure all switch fields are the same witch*/
 }
 
 /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
