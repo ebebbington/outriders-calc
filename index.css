@@ -13,9 +13,15 @@ body {
     margin: auto;
     margin-top: 6em;
 }
+.display-block {
+    display: block;
+}
 input {
     border: none;
     outline: none
+}
+input:disabled + label {
+    cursor: not-allowed !important;
 }
 footer {
     position: absolute;
