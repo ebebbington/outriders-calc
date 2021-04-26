@@ -37,6 +37,9 @@ jobs:
       - name: Install Deno
         uses: denolib/setup-deno@master
 
+      - name: Start server
+        run: deno run -A make_website_a_server.ts &
+
       - name: Unit
         run: deno test -A tests/browser
 
