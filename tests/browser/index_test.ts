@@ -138,19 +138,73 @@ Rhum.testPlan("Home page", () => {
         Rhum.asserts.assertEquals(result1, {
           weapon: {
             checked: true,
-            disabled: false,
+            disabled: null,
           },
           armour: {
             checked: false,
-            disabled: false,
+            disabled: null,
           },
           single: {
             checked: false,
-            disabled: false,
+            disabled: null,
           },
           double: {
             checked: true,
-            disabled: false,
+            disabled: null,
+          },
+        });
+        Rhum.asserts.assertEquals(result2, {
+          weapon: {
+            checked: true,
+            disabled: null,
+          },
+          armour: {
+            checked: true,
+            disabled: null,
+          },
+          single: {
+            checked: false,
+            disabled: true,
+          },
+          double: {
+            checked: true,
+            disabled: null,
+          },
+        });
+        Rhum.asserts.assertEquals(result3, {
+          weapon: {
+            checked: true,
+            disabled: null,
+          },
+          armour: {
+            checked: false,
+            disabled: null,
+          },
+          single: {
+            checked: false,
+            disabled: null,
+          },
+          double: {
+            checked: true,
+            disabled: null,
+          },
+        });
+        Rhum.asserts.assertEquals(result4, {
+          weapon: {
+            checked: true,
+            disabled: null,
+          },
+          armour: {
+            checked: false,
+            disabled: true,
+          },
+          single: {
+            checked: true,
+            disabled: null,
+          },
+          double: {
+            checked: false,
+            disabled: null,
           },
         });
       },
