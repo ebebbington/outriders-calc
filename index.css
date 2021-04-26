@@ -125,9 +125,6 @@ input:read-only {
     border-radius: 0 4px 4px 0;
 }
 
-/*TODO ON MOBILE, DESCRESE WIDTH OF ITEM IONPUTS AND INCREASE FONT SIZE*/
-
-
 @media only screen
 
   and (min-device-width: 375px)
