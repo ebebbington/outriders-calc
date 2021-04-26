@@ -18,31 +18,31 @@ Rhum.testPlan("Home page", () => {
       await Sinco.done();
       Rhum.asserts.assertEquals(val, "no");
     });
-    Rhum.testCase("Can switch type back and forth", async () => {
-      const Sinco = new HeadlessBrowser();
-      await Sinco.build();
-      await Sinco.goTo("http://localhost:1337");
-      await Sinco.click("input#armour");
-      async function getSwitchCheckedProps(): Promise<[boolean, boolean]> {
-        return await Sinco.evaluatePage(() => {
-          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-          // @ts-ignore
-          const elem = document.querySelector("input#armour");
-          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-          // @ts-ignore
-          const elem2 = document.querySelector("input#weapon");
-          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-          // @ts-ignore
-          return [elem2.checked, elem.checked];
-        }) as [boolean, boolean];
-      }
-      const firstSwitchChecked = await getSwitchCheckedProps();
-      await Sinco.click("input#weapon");
-      const secondSwitchChecked = await getSwitchCheckedProps();
-      await Sinco.done();
-      Rhum.asserts.assertEquals(firstSwitchChecked, [false, true]);
-      Rhum.asserts.assertEquals(secondSwitchChecked, [true, false]);
-    });
+    // Rhum.testCase("Can switch type back and forth", async () => {
+    //   const Sinco = new HeadlessBrowser();
+    //   await Sinco.build();
+    //   await Sinco.goTo("http://localhost:1337");
+    //   await Sinco.click("input#armour");
+    //   async function getSwitchCheckedProps(): Promise<[boolean, boolean]> {
+    //     return await Sinco.evaluatePage(() => {
+    //       // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+    //       // @ts-ignore
+    //       const elem = document.querySelector("input#armour");
+    //       // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+    //       // @ts-ignore
+    //       const elem2 = document.querySelector("input#weapon");
+    //       // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+    //       // @ts-ignore
+    //       return [elem2.checked, elem.checked];
+    //     }) as [boolean, boolean];
+    //   }
+    //   const firstSwitchChecked = await getSwitchCheckedProps();
+    //   await Sinco.click("input#weapon");
+    //   const secondSwitchChecked = await getSwitchCheckedProps();
+    //   await Sinco.done();
+    //   Rhum.asserts.assertEquals(firstSwitchChecked, [false, true]);
+    //   Rhum.asserts.assertEquals(secondSwitchChecked, [true, false]);
+    // });
   });
   Rhum.testSuite("Item compare", () => {
     Rhum.testCase(
@@ -70,7 +70,7 @@ Rhum.testPlan("Home page", () => {
           return document.getElementById("item-1-result").value;
         });
         await Sinco.done();
-        Rhum.asserts.assertEquals(result, "5338");
+        Rhum.asserts.assertEquals(result, "16929");
       },
     );
     Rhum.testCase(
@@ -98,7 +98,7 @@ Rhum.testPlan("Home page", () => {
           return document.getElementById("item-2-result").value;
         });
         await Sinco.done();
-        Rhum.asserts.assertEquals(result, "5338");
+        Rhum.asserts.assertEquals(result, "16929");
       },
     );
     Rhum.testCase(
