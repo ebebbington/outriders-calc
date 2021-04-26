@@ -320,9 +320,8 @@ window.addEventListener("DOMContentLoaded", () => {
       maxPossiblePowerForEachItemLevel.weapon[level][rarity];
     const minPowerForLevel =
       maxPossiblePowerForEachItemLevel.weapon[level - 1][rarity] + 1;
-    let percentage =
-      ((power - minPowerForLevel) * 100 /
-        (maxPowerForLevel - minPowerForLevel));
+    let percentage = ((power - minPowerForLevel) * 100 /
+      (maxPowerForLevel - minPowerForLevel));
     percentage = Math.ceil(percentage);
     if (percentage > 100) {
       percentage = 100;
