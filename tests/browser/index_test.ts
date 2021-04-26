@@ -150,6 +150,16 @@ Rhum.testPlan("Home page", () => {
     );
   });
   Rhum.testSuite("Footer", () => {
+    Rhum.testCase("Link in footer directs to GitHub", async () => {
+      const Sinco = new HeadlessBrowser();
+      await Sinco.build();
+      await Sinco.goTo("http://localhost:1337");
+      await Sinco.click("a");
+      await Sinco.waitForPageChange();
+      await Sinco.assertUrlIs(
+        "https://github.com/ebebbington/outriders-calc/issues/new/choose",
+      );
+    });
   });
 });
 
