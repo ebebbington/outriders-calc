@@ -92,7 +92,11 @@ Rhum.testPlan("Home page", () => {
         async function getRadioInfo() {
           function getRadioInfo(id: string) {
             return {
+              // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+              // @ts-ignore
               checked: document.getElementById(id).checked,
+              // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+              // @ts-ignore
               disabled: document.getElementById(id).getAttribute("disabled"),
             };
           }
