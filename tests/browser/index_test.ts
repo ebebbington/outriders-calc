@@ -33,7 +33,77 @@ Rhum.testPlan("Home page", () => {
         });
       },
     );
-    Rhum.testCase("Siwtching to single updates UI", async () => {
+    Rhum.testCase(
+      "Switching to and from armour updates the level 50 power of each item when fields are set",
+      async () => {
+        const Sinco = new HeadlessBrowser();
+        await Sinco.build();
+        await Sinco.goTo("http://localhost:1337");
+        const result1 = await Sinco.evaluatePage(() => {
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          document.getElementById("item-1-level").value = 32;
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          document.getElementById("item-1-power").value = 100;
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          document.getElementById("item-1-level").dispatchEvent(
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            new KeyboardEvent("keyup", { "key": "4" }),
+          );
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          document.getElementById("item-2-level").value = 40;
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          document.getElementById("item-2-power").value = 4000;
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          document.getElementById("item-2-level").dispatchEvent(
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            new KeyboardEvent("keyup", { "key": "4" }),
+          );
+          return [
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            document.getElementById("item-1-result").value,
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            document.getElementById("item-2-result").value,
+          ];
+        });
+        await Sinco.click("#armour");
+        const result2 = await Sinco.evaluatePage(() => {
+          return [
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            document.getElementById("item-1-result").className,
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            document.getElementById("item-2-result").className,
+          ];
+        });
+        await Sinco.click("#weapon");
+        const result3 = await Sinco.evaluatePage(() => {
+          return [
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            document.getElementById("item-1-result").value,
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            document.getElementById("item-2-result").value,
+          ];
+        });
+        await Sinco.done();
+        Rhum.asserts.assertEquals(result1, ["932", "16929"]);
+        Rhum.asserts.assertEquals(result2, ["556", "10375"]);
+        Rhum.asserts.assertEquals(result3, ["932", "16929"]);
+      },
+    );
+    Rhum.testCase("Switching to single updates UI", async () => {
       const Sinco = new HeadlessBrowser();
       await Sinco.build();
       await Sinco.goTo("http://localhost:1337");

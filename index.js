@@ -267,9 +267,13 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   radioButtons.$weapon.addEventListener("change", () => {
     radioButtons.$single.removeAttribute("disabled");
+    updateItemLevel(1);
+    updateItemLevel(2);
   });
   radioButtons.$armor.addEventListener("change", () => {
     radioButtons.$single.setAttribute("disabled", true);
+    updateItemLevel(1);
+    updateItemLevel(2);
   });
 
   function updateCards(isSingle) {
