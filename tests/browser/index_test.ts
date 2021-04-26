@@ -37,7 +37,6 @@ Rhum.testPlan("Home page", () => {
       const Sinco = new HeadlessBrowser();
       await Sinco.build();
       await Sinco.goTo("http://localhost:1337");
-      await Sinco.click("#single");
       const result = await Sinco.evaluatePage(() => {
         // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
         // @ts-ignore
