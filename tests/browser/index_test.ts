@@ -199,15 +199,15 @@ Rhum.testPlan("Home page", () => {
         });
         Rhum.asserts.assertEquals(result4, {
           weapon: {
-            checked: "true",
+            checked: true,
             disabled: null,
           },
           armour: {
             checked: false,
-            disabled: true,
+            disabled: "true",
           },
           single: {
-            checked: "true",
+            checked: true,
             disabled: null,
           },
           double: {
