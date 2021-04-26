@@ -2,23 +2,63 @@ import { HeadlessBrowser, Rhum } from "../deps.ts";
 
 Rhum.testPlan("Home page", () => {
   Rhum.testSuite("Item Type Switch", () => {
-    Rhum.testCase("Weapon type is selected by default", async () => {
+    Rhum.testCase(
+      "Weapon and double types are selected by default. Armour and single are not",
+      async () => {
+        const Sinco = new HeadlessBrowser();
+        await Sinco.build();
+        await Sinco.goTo("http://localhost:1337");
+        const result = await Sinco.evaluatePage(() => {
+          return {
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            weapon: document.getElementById("weapon").checked,
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            armour: document.getElementById("armour").checked,
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            single: document.getElementById("single").checked,
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            double: document.getElementById("double").checked,
+          };
+        });
+        await Sinco.done();
+        Rhum.asserts.assertEquals(result, {
+          weapon: true,
+          armour: false,
+          single: false,
+          double: true,
+        });
+      },
+    );
+    Rhum.testCase("Siwtching to single updates UI", async () => {
       const Sinco = new HeadlessBrowser();
       await Sinco.build();
       await Sinco.goTo("http://localhost:1337");
-      const val = await Sinco.getInputValue("input#weapon");
+      const result = await Sinco.evaluatePage(() => {
+        // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+        // @ts-ignore
+        document.getElementById("single").click();
+        return {
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          single: document.getElementById("single-container").className
+            .includes("display-none"),
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          double: document.getElementById("compare-container").className
+            .includes("display-none"),
+        };
+      });
       await Sinco.done();
-      Rhum.asserts.assertEquals(val, "yes");
+      Rhum.asserts.assertEquals(result, {
+        single: false,
+        double: true,
+      });
     });
-    Rhum.testCase("Armor type is not selected by default", async () => {
-      const Sinco = new HeadlessBrowser();
-      await Sinco.build();
-      await Sinco.goTo("http://localhost:1337");
-      const val = await Sinco.getInputValue("input#armour");
-      await Sinco.done();
-      Rhum.asserts.assertEquals(val, "no");
-    });
-    // Rhum.testCase("Can switch type back and forth", async () => {
+    // Rhum.testCase("Can switch types back and forth for double", async () => {
     //   const Sinco = new HeadlessBrowser();
     //   await Sinco.build();
     //   await Sinco.goTo("http://localhost:1337");
@@ -43,6 +83,51 @@ Rhum.testPlan("Home page", () => {
     //   Rhum.asserts.assertEquals(firstSwitchChecked, [false, true]);
     //   Rhum.asserts.assertEquals(secondSwitchChecked, [true, false]);
     // });
+  });
+  Rhum.testSuite("Single item check", () => {
+    Rhum.testCase("Will update progress bar", async () => {
+      const Sinco = new HeadlessBrowser();
+      await Sinco.build();
+      await Sinco.goTo("http://localhost:1337");
+      await Sinco.click("#single");
+      const result = await Sinco.evaluatePage(() => {
+        // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+        // @ts-ignore
+        document.getElementById("single-level").value = 13;
+        // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+        // @ts-ignore
+        document.getElementById("single-power").value = 600;
+        // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+        // @ts-ignore
+        document.getElementById("single-rarity").value = "Legendary";
+        // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+        // @ts-ignore
+        document.getElementById("single-level").dispatchEvent(
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          new KeyboardEvent("keyup", { "key": "4" }),
+        );
+        // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+        // @ts-ignore
+        return {
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          width: document.querySelector("div#single-result > div").style.width,
+          background:
+            // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+            // @ts-ignore
+            document.querySelector("div#single-result > div").style
+              // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+              // @ts-ignore
+              .background,
+        };
+      });
+      await Sinco.done();
+      Rhum.asserts.assertEquals(result, {
+        width: "86%",
+        background: "purple",
+      });
+    });
   });
   Rhum.testSuite("Item compare", () => {
     Rhum.testCase(
