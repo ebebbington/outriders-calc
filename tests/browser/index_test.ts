@@ -42,16 +42,18 @@ Rhum.testPlan("Home page", () => {
         return {
           // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
           // @ts-ignore
-          single: document.getElementById("single-container").style.display,
+          single: document.getElementById("single-container").className
+            .includes("display-none"),
           // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
           // @ts-ignore
-          double: document.getElementById("compare-container").style.display,
+          double: document.getElementById("compare-container").className
+            .includes("display-none"),
         };
       });
       await Sinco.done();
       Rhum.asserts.assertEquals(result, {
-        single: "block",
-        double: "none",
+        single: true,
+        double: false,
       });
     });
     // Rhum.testCase("Can switch types back and forth for double", async () => {

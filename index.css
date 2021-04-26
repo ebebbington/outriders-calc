@@ -75,8 +75,11 @@ input:read-only {
 #item-2-container {
     margin-left: 0.5em;
 }
-.switch-field label {
-    width: 53.36px; /* only because each switch field contains 2 inputs, we can ensure all switch fields are the same witch*/
+#single-result {
+    border: 1px solid white;
+}
+#single-result > div {
+    height: 33px; background-color: white; width: 0%
 }
 
 /* switch field styling was taken from https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ */
@@ -104,6 +107,7 @@ input:read-only {
     /* border: 1px solid rgba(0, 0, 0, 0.2); */
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
     transition: all 0.1s ease-in-out;
+    width: 53.36px; /* only because each switch field contains 2 inputs, we can ensure all switch fields are the same witch*/
 }
 .switch-field label:hover {
     cursor: pointer;
