@@ -157,7 +157,7 @@ Rhum.testPlan("Home page", () => {
       await Sinco.click("a");
       await Sinco.waitForPageChange();
       await Sinco.assertUrlIs(
-        "https://github.com/ebebbington/outriders-calc/issues/new/choose",
+        "https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Febebbington%2Foutriders-calc%2Fissues%2Fnew%2Fchoose",
       );
     });
   });
