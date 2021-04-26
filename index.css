@@ -11,7 +11,8 @@ body {
     line-height: 2.25rem;
     width: 396px;
     margin: auto;
-    margin-top: 5em;
+    margin-top: 3em;
+    max-width: 100vw;
 }
 .display-block {
     display: block;
@@ -124,4 +125,17 @@ input:read-only {
     border-radius: 0 4px 4px 0;
 }
 
-/*TODO ON MOBILE, DESCRESE WIDTH OF ITEM IONPUTS AND INCREASE FONT SIZE*/
+@media only screen
+
+  and (min-device-width: 375px)
+
+  and (max-device-width: 667px)
+
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  .card input {
+      width: 130px;
+      font-size: .9em;
+  }
+
+}
