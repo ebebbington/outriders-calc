@@ -60,9 +60,12 @@ input:read-only {
     display: none;
 }
 
-#description, #notice, footer > p {
+#description, footer > p {
     max-width: 90vw;
     margin: auto;
+}
+#description {
+    margin-bottom: 1em;
 }
 .card input {
     display: block;
