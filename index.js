@@ -222,6 +222,7 @@ const upradeMultipliers = { // eg a level 10 item will have its power multiplied
     10: 1.102, // multiplier for levels from 31 to 40, incl 31 and 40,
     20: 1.102, // multiplier for levels from 31 to 40, incl 31 and 40,
     30: 1.10, // multiplier for levels from 31 to 40, incl 31 and 40,
+    40: 1.10, // same as above
   },
 };
 
@@ -257,10 +258,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // On the type changed, adjust the UI accordingly to display the proper cards
   radioButtons.$single.addEventListener("change", () => {
+    radioButtons.$armor.setAttribute("disabled", true);
     updateCards(true);
   });
   radioButtons.$double.addEventListener("change", () => {
+    radioButtons.$armor.removeAttribute("disabled");
     updateCards(false);
+  });
+  radioButtons.$weapon.addEventListener("change", () => {
+    radioButtons.$single.removeAttribute("disabled");
+  });
+  radioButtons.$armor.addEventListener("change", () => {
+    radioButtons.$single.setAttribute("disabled", true);
   });
 
   function updateCards(isSingle) {

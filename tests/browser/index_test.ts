@@ -58,31 +58,165 @@ Rhum.testPlan("Home page", () => {
         double: true,
       });
     });
-    // Rhum.testCase("Can switch types back and forth for double", async () => {
-    //   const Sinco = new HeadlessBrowser();
-    //   await Sinco.build();
-    //   await Sinco.goTo("http://localhost:1337");
-    //   await Sinco.click("input#armour");
-    //   async function getSwitchCheckedProps(): Promise<[boolean, boolean]> {
-    //     return await Sinco.evaluatePage(() => {
-    //       // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-    //       // @ts-ignore
-    //       const elem = document.querySelector("input#armour");
-    //       // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-    //       // @ts-ignore
-    //       const elem2 = document.querySelector("input#weapon");
-    //       // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
-    //       // @ts-ignore
-    //       return [elem2.checked, elem.checked];
-    //     }) as [boolean, boolean];
-    //   }
-    //   const firstSwitchChecked = await getSwitchCheckedProps();
-    //   await Sinco.click("input#weapon");
-    //   const secondSwitchChecked = await getSwitchCheckedProps();
-    //   await Sinco.done();
-    //   Rhum.asserts.assertEquals(firstSwitchChecked, [false, true]);
-    //   Rhum.asserts.assertEquals(secondSwitchChecked, [true, false]);
-    // });
+    Rhum.testCase("Can switch types back and forth for double", async () => {
+      const Sinco = new HeadlessBrowser();
+      await Sinco.build();
+      await Sinco.goTo("http://localhost:1337");
+      await Sinco.click("input#armour");
+      async function getSwitchCheckedProps(): Promise<[boolean, boolean]> {
+        return await Sinco.evaluatePage(() => {
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          const elem = document.querySelector("input#armour");
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          const elem2 = document.querySelector("input#weapon");
+          // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+          // @ts-ignore
+          return [elem2.checked, elem.checked];
+        }) as [boolean, boolean];
+      }
+      const firstSwitchChecked = await getSwitchCheckedProps();
+      await Sinco.click("input#weapon");
+      const secondSwitchChecked = await getSwitchCheckedProps();
+      await Sinco.done();
+      Rhum.asserts.assertEquals(firstSwitchChecked, [false, true]);
+      Rhum.asserts.assertEquals(secondSwitchChecked, [true, false]);
+    });
+    Rhum.testCase(
+      "Specific radios are disabled in certain scenarios",
+      async () => {
+        const Sinco = new HeadlessBrowser();
+        await Sinco.build();
+        await Sinco.goTo("http://localhost:1337");
+        async function getRadioInfo() {
+          return await Sinco.evaluatePage(() => {
+            return {
+              weapon: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("weapon").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("weapon").getAttribute(
+                  "disabled",
+                ),
+              },
+              armour: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("armour").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("armour").getAttribute(
+                  "disabled",
+                ),
+              },
+              single: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("single").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("single").getAttribute(
+                  "disabled",
+                ),
+              },
+              double: {
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                checked: document.getElementById("double").checked,
+                // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
+                // @ts-ignore
+                disabled: document.getElementById("double").getAttribute(
+                  "disabled",
+                ),
+              },
+            };
+          });
+        }
+        const result1 = await getRadioInfo();
+        await Sinco.click("#armour");
+        const result2 = await getRadioInfo();
+        await Sinco.click("#weapon");
+        const result3 = await getRadioInfo();
+        await Sinco.click("#single");
+        const result4 = await getRadioInfo();
+        await Sinco.done();
+        Rhum.asserts.assertEquals(result1, {
+          weapon: {
+            checked: true,
+            disabled: null,
+          },
+          armour: {
+            checked: false,
+            disabled: null,
+          },
+          single: {
+            checked: false,
+            disabled: null,
+          },
+          double: {
+            checked: true,
+            disabled: null,
+          },
+        });
+        Rhum.asserts.assertEquals(result2, {
+          weapon: {
+            checked: false,
+            disabled: null,
+          },
+          armour: {
+            checked: true,
+            disabled: null,
+          },
+          single: {
+            checked: false,
+            disabled: "true",
+          },
+          double: {
+            checked: true,
+            disabled: null,
+          },
+        });
+        Rhum.asserts.assertEquals(result3, {
+          weapon: {
+            checked: true,
+            disabled: null,
+          },
+          armour: {
+            checked: false,
+            disabled: null,
+          },
+          single: {
+            checked: false,
+            disabled: null,
+          },
+          double: {
+            checked: true,
+            disabled: null,
+          },
+        });
+        Rhum.asserts.assertEquals(result4, {
+          weapon: {
+            checked: true,
+            disabled: null,
+          },
+          armour: {
+            checked: false,
+            disabled: "true",
+          },
+          single: {
+            checked: true,
+            disabled: null,
+          },
+          double: {
+            checked: false,
+            disabled: null,
+          },
+        });
+      },
+    );
   });
   Rhum.testSuite("Single item check", () => {
     Rhum.testCase("Will update progress bar", async () => {
