@@ -24,7 +24,7 @@ Rhum.testPlan("Home page", () => {
       await Sinco.goTo("http://localhost:1337");
       await Sinco.click("input#armour");
       async function getSwitchCheckedProps(): Promise<[boolean, boolean]> {
-        const result = await Sinco.evaluatePage(() => {
+        return await Sinco.evaluatePage(() => {
           // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
           // @ts-ignore
           const elem = document.querySelector("input#armour");
@@ -35,7 +35,6 @@ Rhum.testPlan("Home page", () => {
           // @ts-ignore
           return [elem2.checked, elem.checked];
         }) as [boolean, boolean];
-        return result;
       }
       const firstSwitchChecked = await getSwitchCheckedProps();
       await Sinco.click("input#weapon");

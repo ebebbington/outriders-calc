@@ -40,7 +40,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   function getSelectedItemType() {
     const $weapon = document.getElementById("weapon");
-    //const $armor = document.getElementById("armor");
     if ($weapon.checked) {
       return "weapon";
     } else {
