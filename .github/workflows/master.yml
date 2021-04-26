@@ -18,7 +18,7 @@ jobs:
         uses: denolib/setup-deno@master
 
       - name: Start Server
-        run: deno run -A tests/make_website_a_server.ts &
+        run: deno run -A make_website_a_server.ts &
 
       - name: Use Pa11y
         run: |
