@@ -254,8 +254,6 @@ window.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // TODO ON CHANGING WEAPON OR ARMOR SELECT, UPDATE EACH ITEM TO USE ARMOR BRACKETS
-
   // On the type changed, adjust the UI accordingly to display the proper cards
   radioButtons.$single.addEventListener("change", () => {
     radioButtons.$armor.setAttribute("disabled", true);
@@ -267,9 +265,13 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   radioButtons.$weapon.addEventListener("change", () => {
     radioButtons.$single.removeAttribute("disabled");
+    updateItemLevel(1);
+    updateItemLevel(2);
   });
   radioButtons.$armor.addEventListener("change", () => {
     radioButtons.$single.setAttribute("disabled", true);
+    updateItemLevel(1);
+    updateItemLevel(2);
   });
 
   function updateCards(isSingle) {
@@ -308,13 +310,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const power = itemInputs.single.$power.value;
     const rarity = itemInputs.single.$rarity.value.toLowerCase();
 
-    // TODO TURN THIS LOGIC INTO A REUSABLE VALIDATE INPUT METHOD
     //
     // VALIDATION
     //
     // If theres no bracket, eg user has only typed "1" for "19" for the level, clear item result
     if (level.toString().length === 1) {
-      // todo clear item result
       return false;
     }
     // If either level or power fields are empty, do nothing
@@ -325,6 +325,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (level > maxItemLevel) {
       return false;
     }
+
     const maxPowerForLevel =
       maxPossiblePowerForEachItemLevel.weapon[level][rarity];
     const minPowerForLevel =
@@ -335,15 +336,25 @@ window.addEventListener("DOMContentLoaded", () => {
     if (percentage > 100) {
       percentage = 100;
     }
-    const colour = percentage === 100
-      ? "#b18300"
-      : percentage > 75
-      ? "purple"
-      : percentage > 50
-      ? "blue"
-      : percentage > 25
-      ? "orange"
-      : "red";
+
+    let colour = "";
+    switch (true) {
+      case (percentage === 100):
+        colour = "#b18300";
+        break;
+      case (percentage > 75):
+        colour = "purple";
+        break;
+      case (percentage > 50):
+        colour = "blue";
+        break;
+      case (percentage > 25):
+        colour = "orange";
+        break;
+      default:
+        colour = "red";
+        break;
+    }
     document.querySelector("div#single-result > div").style.width = percentage +
       "%";
     document.querySelector("div#single-result > div").style.background = colour;
@@ -375,7 +386,6 @@ window.addEventListener("DOMContentLoaded", () => {
     //
     // If theres no bracket, eg user has only typed "1" for "19" for the level, clear item result
     if (itemLevel.toString().length === 1) {
-      // todo clear item result
       return false;
     }
     // If either level or power fields are empty, do nothing
