@@ -1,4 +1,4 @@
-const maxItemLevel = 42;
+const maxItemLevel = 50;
 const powerBrackets = {
   weapon: {
     10: 1.1275, // multiplier for levels from 11 to 20, incl 11 and 20,
@@ -72,7 +72,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //
     let updatedPower = itemPower;
     let itemLevelCounter = itemLevel;
-    // for each level until 42, increase using multiplier
+    // for each level until the max, increase using multiplier
     while (itemLevelCounter < maxItemLevel) {
       const closestBracket = Number(
         itemLevelCounter.toString().slice(0, -1) + "0",
