@@ -80,10 +80,10 @@ Rhum.testPlan("Home page", () => {
           return [
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
             // @ts-ignore
-            document.getElementById("item-1-result").className,
+            document.getElementById("item-1-result").value,
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
             // @ts-ignore
-            document.getElementById("item-2-result").className,
+            document.getElementById("item-2-result").value,
           ];
         });
         await Sinco.click("#weapon");
