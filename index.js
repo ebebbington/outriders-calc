@@ -337,23 +337,23 @@ window.addEventListener("DOMContentLoaded", () => {
       percentage = 100;
     }
 
-    let colour = ""
-    switch (percentage) {
+    let colour = "";
+    switch (true) {
+      case (percentage === 100):
+        colour = "#b18300";
+        break;
       case (percentage > 75):
-        colour = "#b18300"
-        break
-      case (percentage > 75):
-        colour = "purple"
-        break
+        colour = "purple";
+        break;
       case (percentage > 50):
-        colour = "blue"
-        break
+        colour = "blue";
+        break;
       case (percentage > 25):
-        colour = "orange"
-        break
+        colour = "orange";
+        break;
       default:
-        colour = "red"
-        break
+        colour = "red";
+        break;
     }
     document.querySelector("div#single-result > div").style.width = percentage +
       "%";
