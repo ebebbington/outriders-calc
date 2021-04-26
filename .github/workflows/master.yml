@@ -40,7 +40,7 @@ jobs:
       - name: Start server
         run: deno run -A make_website_a_server.ts &
 
-      - name: Unit
+      - name: Browser
         run: deno test -A tests/browser
 
   formatter:
