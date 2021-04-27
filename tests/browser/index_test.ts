@@ -17,10 +17,10 @@ Rhum.testPlan("Home page", () => {
           return {
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
             // @ts-ignore
-            weapon: document.getElementById(switches.weapon).checked,
+            weapon: document.getElementById("weapon-switch").checked,
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
             // @ts-ignore
-            armour: document.getElementById(switches.armour).checked,
+            armour: document.getElementById("armour-switch").checked,
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
             // @ts-ignore
             //single: document.getElementById("single").checked,

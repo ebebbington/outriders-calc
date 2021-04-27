@@ -264,12 +264,12 @@ window.addEventListener("DOMContentLoaded", () => {
   //   updateCards(false);
   // });
   radioButtons.$weapon.addEventListener("change", () => {
-    radioButtons.$check.removeAttribute("disabled");
+    //radioButtons.$check.removeAttribute("disabled");
     updateItemLevel(1);
     updateItemLevel(2);
   });
   radioButtons.$armor.addEventListener("change", () => {
-    radioButtons.$check.setAttribute("disabled", true);
+    //radioButtons.$check.setAttribute("disabled", true);
     updateItemLevel(1);
     updateItemLevel(2);
   });
