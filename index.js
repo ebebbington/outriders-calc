@@ -2,7 +2,7 @@
 // DATA
 //
 const maxItemLevel = 50;
-const maxPossiblePowerForEachItemLevel = {
+const maxPossiblePowerForEachItemLevel = { // BROKEN... A ll 33 wep can have 10400 power, it seems impossible to know what the lowest power a level can have
   weapon: {
     10: {
       legendary: 425,
@@ -230,8 +230,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const radioButtons = {
     $weapon: document.getElementById("weapon-switch"),
     $armor: document.getElementById("armour-switch"),
-    $check: document.getElementById("check-switch"),
-    $compare: document.getElementById("compare-switch"),
+    //$check: document.getElementById("check-switch"),
+    //$compare: document.getElementById("compare-switch"),
   };
   const itemInputs = {
     compare: {
@@ -246,23 +246,23 @@ window.addEventListener("DOMContentLoaded", () => {
         $result: document.getElementById("item-2-result"),
       },
     },
-    check: {
-      $level: document.getElementById("check-level"),
-      $power: document.getElementById("check-power"),
-      $rarity: document.getElementById("check-rarity"),
-      $result: document.getElementById("check-result"),
-    },
+    // check: {
+    //   $level: document.getElementById("check-level"),
+    //   $power: document.getElementById("check-power"),
+    //   $rarity: document.getElementById("check-rarity"),
+    //   $result: document.getElementById("check-result"),
+    // },
   };
 
   // On the type changed, adjust the UI accordingly to display the proper cards
-  radioButtons.$check.addEventListener("change", () => {
-    radioButtons.$armor.setAttribute("disabled", true);
-    updateCards(true);
-  });
-  radioButtons.$compare.addEventListener("change", () => {
-    radioButtons.$armor.removeAttribute("disabled");
-    updateCards(false);
-  });
+  // radioButtons.$check.addEventListener("change", () => {
+  //   radioButtons.$armor.setAttribute("disabled", true);
+  //   updateCards(true);
+  // });
+  // radioButtons.$compare.addEventListener("change", () => {
+  //   radioButtons.$armor.removeAttribute("disabled");
+  //   updateCards(false);
+  // });
   radioButtons.$weapon.addEventListener("change", () => {
     radioButtons.$check.removeAttribute("disabled");
     updateItemLevel(1);
@@ -306,7 +306,6 @@ window.addEventListener("DOMContentLoaded", () => {
     updateItemLevel(2);
   });
   function handleSingle() {
-    console.log("inside single");
     const level = itemInputs.check.$level.value;
     const power = itemInputs.check.$power.value;
     const rarity = itemInputs.check.$rarity.value.toLowerCase();
@@ -338,6 +337,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (percentage > 100) {
       percentage = 100;
     }
+    console.log(maxPowerForLevel, minPowerForLevel, percentage)
 
     let colour = "";
     switch (true) {
@@ -361,15 +361,16 @@ window.addEventListener("DOMContentLoaded", () => {
       "%";
     document.querySelector("div#check-result > div").style.background = colour;
   }
-  itemInputs.check.$level.addEventListener("keyup", () => {
-    handleSingle();
-  });
-  itemInputs.check.$rarity.addEventListener("change", () => {
-    handleSingle();
-  });
-  itemInputs.check.$power.addEventListener("keyup", () => {
-    handleSingle();
-  });
+
+  // itemInputs.check.$level.addEventListener("keyup", () => {
+  //   handleSingle();
+  // });
+  // itemInputs.check.$rarity.addEventListener("change", () => {
+  //   handleSingle();
+  // });
+  // itemInputs.check.$power.addEventListener("keyup", () => {
+  //   handleSingle();
+  // });
 
   function getSelectedItemType() {
     const $weapon = document.getElementById("weapon-switch");
