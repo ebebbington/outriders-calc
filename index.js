@@ -296,7 +296,6 @@ window.addEventListener("DOMContentLoaded", () => {
     updateItemLevel(1);
   });
   itemInputs.compare[1].$power.addEventListener("keyup", () => {
-    console.log("yyy");
     updateItemLevel(1);
   });
   itemInputs.compare[2].$level.addEventListener("keyup", () => {
@@ -309,7 +308,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const level = itemInputs.check.$level.value;
     const power = itemInputs.check.$power.value;
     const rarity = itemInputs.check.$rarity.value.toLowerCase();
-    console.log(level, power, rarity);
 
     //
     // VALIDATION
@@ -337,7 +335,6 @@ window.addEventListener("DOMContentLoaded", () => {
     if (percentage > 100) {
       percentage = 100;
     }
-    console.log(maxPowerForLevel, minPowerForLevel, percentage)
 
     let colour = "";
     switch (true) {

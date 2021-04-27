@@ -80,7 +80,7 @@ Rhum.testPlan("Home page", () => {
             document.getElementById("item-2-result").value,
           ];
         });
-        await Sinco.click("#armour");
+        await Sinco.click("#" + switches.armour);
         const result2 = await Sinco.evaluatePage(() => {
           return [
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
@@ -91,7 +91,7 @@ Rhum.testPlan("Home page", () => {
             document.getElementById("item-2-result").value,
           ];
         });
-        await Sinco.click("#weapon");
+        await Sinco.click("#" + switches.weapon);
         const result3 = await Sinco.evaluatePage(() => {
           return [
             // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
