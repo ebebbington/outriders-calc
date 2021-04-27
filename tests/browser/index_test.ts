@@ -137,7 +137,7 @@ Rhum.testPlan("Home page", () => {
       const Sinco = new HeadlessBrowser();
       await Sinco.build();
       await Sinco.goTo("http://localhost:1337");
-      await Sinco.click("input#armour");
+      await Sinco.click("input#armour-switch");
       async function getSwitchCheckedProps(): Promise<[boolean, boolean]> {
         return await Sinco.evaluatePage(() => {
           // deno-lint-ignore ban-ts-comment Deno broke usage of the tsconfig we need again...
