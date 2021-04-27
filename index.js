@@ -306,11 +306,11 @@ window.addEventListener("DOMContentLoaded", () => {
     updateItemLevel(2);
   });
   function handleSingle() {
-    console.log('inside single')
+    console.log("inside single");
     const level = itemInputs.check.$level.value;
     const power = itemInputs.check.$power.value;
     const rarity = itemInputs.check.$rarity.value.toLowerCase();
-    console.log(level, power, rarity)
+    console.log(level, power, rarity);
 
     //
     // VALIDATION
@@ -372,7 +372,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   function getSelectedItemType() {
-    const $weapon = document.getElementById("weapon-check");
+    const $weapon = document.getElementById("weapon-switch");
     if ($weapon.checked) {
       return "weapon";
     } else {
