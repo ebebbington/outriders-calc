@@ -2,8 +2,8 @@ import { HeadlessBrowser, Rhum } from "../deps.ts";
 
 const switches = {
   weapon: "weapon-switch",
-  armour: "armour-switch"
-}
+  armour: "armour-switch",
+};
 
 Rhum.testPlan("Home page", () => {
   Rhum.testSuite("Item Type Switch", () => {

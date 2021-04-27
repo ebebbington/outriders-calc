@@ -274,7 +274,7 @@ window.addEventListener("DOMContentLoaded", () => {
     updateItemLevel(2);
   });
 
-  function updateCards(isSingle) {
+  function _updateCards(isSingle) {
     if (isSingle === true) {
       // Hide compare cards, display single card
       document.getElementById("check-container").classList.remove(
@@ -305,7 +305,7 @@ window.addEventListener("DOMContentLoaded", () => {
   itemInputs.compare[2].$power.addEventListener("keyup", () => {
     updateItemLevel(2);
   });
-  function handleSingle() {
+  function _handleSingle() {
     const level = itemInputs.check.$level.value;
     const power = itemInputs.check.$power.value;
     const rarity = itemInputs.check.$rarity.value.toLowerCase();
