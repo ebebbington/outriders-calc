@@ -426,11 +426,11 @@ window.addEventListener("DOMContentLoaded", () => {
       !itemOneResult || !itemTwoResult || isNaN(itemOneResult) ||
       isNaN(itemTwoResult)
     ) {
-      itemInputs.double[1].$result.classList.remove(
+      itemInputs.compare[1].$result.classList.remove(
         "highlight-good",
         "highlight-bad",
       );
-      itemInputs.double[2].$result.classList.remove(
+      itemInputs.compare[2].$result.classList.remove(
         "highlight-good",
         "highlight-bad",
       );
