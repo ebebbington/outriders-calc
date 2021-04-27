@@ -16,6 +16,7 @@ body {
 }
 header {
     font-size: .9em;
+    margin-bottom: 1em;
 }
 input {
     border: none;
@@ -63,9 +64,6 @@ input:read-only {
     max-width: 90vw;
     margin: auto;
 }
-#description {
-    margin-bottom: 1em;
-}
 .card input {
     display: block;
     padding: .8em;
@@ -80,10 +78,10 @@ input:read-only {
 #item-2-container {
     margin-left: 0.5em;
 }
-#single-result {
+#check-result {
     border: 1px solid white;
 }
-#single-result > div {
+#check-result > div {
     height: 33px; background-color: white; width: 0%
 }
 
