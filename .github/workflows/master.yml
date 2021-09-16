@@ -22,6 +22,7 @@ jobs:
 
       - name: Use Pa11y
         run: |
+          sleep 10
           npm i pa11y
           node_modules/.bin/pa11y --ignore "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail" http://localhost:1337
 
