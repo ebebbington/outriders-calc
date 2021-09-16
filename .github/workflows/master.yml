@@ -42,7 +42,7 @@ jobs:
         run: deno run -A make_website_a_server.ts &
 
       - name: Browser
-        run: deno test -A tests/browser
+        run: deno test -A -c tests/tsconfig.json tests/browser
 
   formatter:
     # Only one OS is required since fmt is cross platform

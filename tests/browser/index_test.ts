@@ -133,7 +133,6 @@ Rhum.testPlan("Home page", () => {
     // });
     Rhum.testCase("Can switch types back and forth for double", async () => {
       const Sinco = await buildFor("chrome");
-      await Sinco.build();
       await Sinco.goTo("http://localhost:1337");
       await Sinco.click("input#armour-switch");
       async function getSwitchCheckedProps(): Promise<[boolean, boolean]> {
@@ -414,12 +413,12 @@ Rhum.testPlan("Home page", () => {
           // deno-lint-ignore ban-ts-comment
           // @ts-ignore
           document.getElementById("item-2-power").value = 4000;
-          document.getElementById("item-2-level").dispatchEvent(
+          document.getElementById("item-2-level")!.dispatchEvent(
             new KeyboardEvent("keyup", { "key": "4" }),
           );
           return [
-            document.getElementById("item-1-result").className,
-            document.getElementById("item-2-result").className,
+            document.getElementById("item-1-result")!.className,
+            document.getElementById("item-2-result")!.className,
           ];
         });
         await Sinco.done();
@@ -430,7 +429,6 @@ Rhum.testPlan("Home page", () => {
   Rhum.testSuite("Footer", () => {
     Rhum.testCase("Link in footer directs to GitHub", async () => {
       const Sinco = await buildFor("chrome");
-      await Sinco.build();
       await Sinco.goTo("http://localhost:1337");
       await Sinco.click("a");
       await Sinco.waitForPageChange();
