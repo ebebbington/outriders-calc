@@ -11,7 +11,6 @@ Rhum.testPlan("Home page", () => {
       "Weapon type is selected by default. Armour is not",
       async () => {
         const Sinco = await buildFor("chrome");
-        await Sinco.build();
         await Sinco.goTo("http://localhost:1337");
         const result = await Sinco.evaluatePage(() => {
           return {
@@ -42,7 +41,6 @@ Rhum.testPlan("Home page", () => {
       "Switching to and from armour updates the level 50 power of each item when fields are set",
       async () => {
         const Sinco = await buildFor("chrome");
-        await Sinco.build();
         await Sinco.goTo("http://localhost:1337");
         const result1 = await Sinco.evaluatePage(() => {
           // deno-lint-ignore ban-ts-comment
@@ -343,7 +341,6 @@ Rhum.testPlan("Home page", () => {
       "Filling in level and power for item 1 shows result",
       async () => {
         const Sinco = await buildFor("chrome");
-        await Sinco.build();
         await Sinco.goTo("http://localhost:1337");
         const result = await Sinco.evaluatePage(() => {
           // deno-lint-ignore ban-ts-comment
@@ -371,7 +368,6 @@ Rhum.testPlan("Home page", () => {
       "Filling in level and power for item 2 shows result",
       async () => {
         const Sinco = await buildFor("chrome");
-        await Sinco.build();
         await Sinco.goTo("http://localhost:1337");
         const result = await Sinco.evaluatePage(() => {
           // deno-lint-ignore ban-ts-comment
@@ -399,7 +395,6 @@ Rhum.testPlan("Home page", () => {
       "Filling in both items works, and shows which one is strongest",
       async () => {
         const Sinco = await buildFor("chrome");
-        await Sinco.build();
         await Sinco.goTo("http://localhost:1337");
         const result = await Sinco.evaluatePage(() => {
           // deno-lint-ignore ban-ts-comment
