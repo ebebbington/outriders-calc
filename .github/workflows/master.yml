@@ -22,6 +22,7 @@ jobs:
 
       - name: Use Pa11y
         run: |
+          sleep 10
           npm i pa11y
           node_modules/.bin/pa11y --ignore "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail" http://localhost:1337
 
@@ -41,7 +42,7 @@ jobs:
         run: deno run -A make_website_a_server.ts &
 
       - name: Browser
-        run: deno test -A tests/browser
+        run: deno test -A -c tests/tsconfig.json tests/browser
 
   formatter:
     # Only one OS is required since fmt is cross platform

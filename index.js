@@ -226,7 +226,7 @@ const upradeMultipliers = { // eg a level 10 item will have its power multiplied
   },
 };
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const radioButtons = {
     $weapon: document.getElementById("weapon-switch"),
     $armor: document.getElementById("armour-switch"),
